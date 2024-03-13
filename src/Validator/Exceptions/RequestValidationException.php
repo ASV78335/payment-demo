@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Exception;
+namespace App\Validator\Exceptions;
 
+use RuntimeException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
-class RequestValidationException extends \RuntimeException
+class RequestValidationException extends RuntimeException
 {
     public function __construct(private readonly ConstraintViolationListInterface $violations)
     {

@@ -21,7 +21,11 @@ services:
             - '../src/Kernel.php'
 
 
-    App\FrontService\ExceptionListener\ExceptionListener:
+    App\Validator\ValidatorExceptionListener\ValidatorExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, priority: 10 }
+
+    App\PriceCalculator\BusinessLogicExceptionListener:
         tags:
             - { name: kernel.event_listener, event: kernel.exception, priority: 10 }
 

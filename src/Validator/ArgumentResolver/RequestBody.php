@@ -1,6 +1,6 @@
 <?php
 
-namespace App\FrontService\ArgumentResolver;
+namespace App\Validator\ArgumentResolver;
 
 use Attribute;
 

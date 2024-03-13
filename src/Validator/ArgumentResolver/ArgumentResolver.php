@@ -1,9 +1,9 @@
 <?php
 
-namespace App\FrontService\ArgumentResolver;
+namespace App\Validator\ArgumentResolver;
 
-use App\Exception\RequestConvertException;
-use App\Exception\RequestValidationException;
+use App\Validator\Exceptions\RequestConvertException;
+use App\Validator\Exceptions\RequestValidationException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Controller\ValueResolverInterface;
 use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;

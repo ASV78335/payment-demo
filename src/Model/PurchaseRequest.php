@@ -3,11 +3,12 @@
 namespace App\Model;
 
 use App\Config;
+use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Positive;
 use Symfony\Component\Validator\Constraints\Regex;
 
-class CalculatePriceRequest implements RequestInterface
+class PurchaseRequest implements RequestInterface
 {
     #[Positive]
     private ?int $product = null;
@@ -18,6 +19,9 @@ class CalculatePriceRequest implements RequestInterface
 
     #[Regex (Config::COUPON_CODE_MASK)]
     private ?string $couponCode = null;
+
+    #[Choice(Config::PAYMENT_PROCESSORS)]
+    private ?string $paymentProcessor = null;
 
     public function getProduct(): ?int
     {
@@ -47,5 +51,15 @@ class CalculatePriceRequest implements RequestInterface
     public function setCouponCode(?string $couponCode): void
     {
         $this->couponCode = $couponCode;
+    }
+
+    public function getPaymentProcessor(): ?string
+    {
+        return $this->paymentProcessor;
+    }
+
+    public function setPaymentProcessor(?string $paymentProcessor): void
+    {
+        $this->paymentProcessor = $paymentProcessor;
     }
 }

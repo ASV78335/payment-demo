@@ -1,14 +1,14 @@
 <?php
 
-namespace App\FrontService\ExceptionListener;
+namespace App\Validator\ValidatorExceptionListener;
 
-use App\Exception\RequestConvertException;
-use App\Exception\RequestValidationException;
+use App\Validator\Exceptions\RequestConvertException;
+use App\Validator\Exceptions\RequestValidationException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 
-class ExceptionListener
+class ValidatorExceptionListener
 {
     public function __invoke(ExceptionEvent $event):void
     {
@@ -18,10 +18,8 @@ class ExceptionListener
             $event->setResponse(new JsonResponse($throwable->getMessage(), Response::HTTP_BAD_REQUEST));
         }
         elseif ($throwable instanceof RequestValidationException) {
-            $event->setResponse(new JsonResponse([
-                $throwable->getViolations()[0]->getPropertyPath(),
-                $throwable->getViolations()[0]->getMessage()
-            ],
+            $event->setResponse(new JsonResponse(
+                $throwable->getViolations()[0]->getPropertyPath() . ': ' . $throwable->getViolations()[0]->getMessage(),
             Response::HTTP_BAD_REQUEST));
         }
     }
