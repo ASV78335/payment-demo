@@ -5,7 +5,8 @@ namespace App\PurchaseHandler;
 use App\PriceCalculator\BusinessLogicException;
 use App\ThirdPartyProcessors\StripePaymentProcessor;
 
-class StripePaymentHandler implements PaymentInterface
+#[AsPaymentAdapter ('stripe')]
+class StripePaymentAdapter implements PaymentInterface
 {
     public function pay(float $price): void
     {

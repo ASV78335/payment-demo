@@ -19,9 +19,4 @@ class Config
         'paypal',
         'stripe'
     ];
-
-    public const PAYMENT_HANDLERS = [
-        'paypal' => 'App\PurchaseHandler\PaypalPaymentHandler',
-        'stripe' => 'App\PurchaseHandler\StripePaymentHandler'
-    ];
 }

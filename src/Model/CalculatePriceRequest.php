@@ -24,9 +24,10 @@ class CalculatePriceRequest implements RequestInterface
         return $this->product;
     }
 
-    public function setProduct(?int $product): void
+    public function setProduct(?int $product): self
     {
         $this->product = $product;
+        return $this;
     }
 
     public function getTaxNumber(): ?string
@@ -34,9 +35,10 @@ class CalculatePriceRequest implements RequestInterface
         return $this->taxNumber;
     }
 
-    public function setTaxNumber(?string $taxNumber): void
+    public function setTaxNumber(?string $taxNumber): self
     {
         $this->taxNumber = $taxNumber;
+        return $this;
     }
 
     public function getCouponCode(): ?string
@@ -44,8 +46,9 @@ class CalculatePriceRequest implements RequestInterface
         return $this->couponCode;
     }
 
-    public function setCouponCode(?string $couponCode): void
+    public function setCouponCode(?string $couponCode): self
     {
         $this->couponCode = $couponCode;
+        return $this;
     }
 }

@@ -6,13 +6,13 @@ interface RequestInterface
 {
     public function getProduct(): ?int;
 
-    public function setProduct(?int $product): void;
+    public function setProduct(?int $product): self;
 
     public function getTaxNumber(): ?string;
 
-    public function setTaxNumber(?string $taxNumber): void;
+    public function setTaxNumber(?string $taxNumber): self;
 
     public function getCouponCode(): ?string;
 
-    public function setCouponCode(?string $couponCode): void;
+    public function setCouponCode(?string $couponCode): self;
 }
