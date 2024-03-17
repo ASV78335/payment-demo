@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Validator\ValidatorExceptionListener;
+namespace App\Listeners;
 
-use App\Validator\Exceptions\RequestConvertException;
-use App\Validator\Exceptions\RequestValidationException;
+use App\Exceptions\RequestConvertException;
+use App\Exceptions\RequestValidationException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Validator\Exceptions;
+namespace App\Exceptions;
 
 use RuntimeException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;

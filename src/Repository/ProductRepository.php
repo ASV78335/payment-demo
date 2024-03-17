@@ -19,5 +19,4 @@ class ProductRepository
     {
         return $this->data[$id]['price'];
     }
-
 }

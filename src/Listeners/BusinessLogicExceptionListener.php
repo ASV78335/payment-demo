@@ -1,7 +1,8 @@
 <?php
 
-namespace App\PriceCalculator;
+namespace App\Listeners;
 
+use App\Exceptions\BusinessLogicException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;

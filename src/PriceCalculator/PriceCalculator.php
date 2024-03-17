@@ -3,6 +3,7 @@
 namespace App\PriceCalculator;
 
 use App\Config;
+use App\Exceptions\BusinessLogicException;
 use App\Model\RequestInterface;
 use App\Repository\CouponRepository;
 use App\Repository\ProductRepository;
@@ -51,5 +52,4 @@ class PriceCalculator
         $tax = Config::COUNTRY_TAXES[substr($taxNumber, 0, 2)];
         return $sum * $tax / 100;
     }
-
 }

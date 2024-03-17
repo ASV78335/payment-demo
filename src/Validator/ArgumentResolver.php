@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Validator\ArgumentResolver;
+namespace App\Validator;
 
-use App\Validator\Exceptions\RequestConvertException;
-use App\Validator\Exceptions\RequestValidationException;
+use App\Attributes\RequestBody;
+use App\Exceptions\RequestConvertException;
+use App\Exceptions\RequestValidationException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Controller\ValueResolverInterface;
 use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
@@ -49,6 +50,4 @@ class ArgumentResolver implements ValueResolverInterface
 
         return [$model];
     }
-
 }
-

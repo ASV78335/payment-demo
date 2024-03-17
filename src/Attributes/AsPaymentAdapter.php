@@ -1,6 +1,6 @@
 <?php
 
-namespace App\PurchaseHandler;
+namespace App\Attributes;
 
 use Attribute;
 

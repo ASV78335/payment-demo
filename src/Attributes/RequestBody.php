@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Validator\ArgumentResolver;
+namespace App\Attributes;
 
 use Attribute;
 
 #[Attribute(Attribute::TARGET_PARAMETER)]
 class RequestBody
 {
+
 }

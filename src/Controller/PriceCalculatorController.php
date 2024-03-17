@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
+use App\Attributes\RequestBody;
 use App\Model\CalculatePriceRequest;
 use App\PriceCalculator\PriceCalculator;
-use App\Validator\ArgumentResolver\RequestBody;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

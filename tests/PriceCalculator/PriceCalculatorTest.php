@@ -20,6 +20,7 @@ class PriceCalculatorTest extends TestCase
         $this->couponRepository= $this->createMock(CouponRepository::class);
         $this->productRepository = $this->createMock(ProductRepository::class);
     }
+
     public function testCalc(): void
     {
         $request = (new CalculatePriceRequest())

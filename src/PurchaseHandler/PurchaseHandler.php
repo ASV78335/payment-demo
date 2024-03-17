@@ -2,8 +2,9 @@
 
 namespace App\PurchaseHandler;
 
+use App\Exceptions\BusinessLogicException;
 use App\Model\PurchaseRequest;
-use App\PriceCalculator\BusinessLogicException;
+use App\PurchaseHandler\PaymentAdapters\PaymentInterface;
 use Exception;
 use HaydenPierce\ClassFinder\ClassFinder;
 use ReflectionClass;
@@ -14,30 +15,29 @@ class PurchaseHandler
     /**
      * @throws ReflectionException
      */
-    public function purchase(PurchaseRequest $request, float $sum): void
+    public function purchase(PurchaseRequest $request, float $sum): bool
     {
-        $paymentAdapter = $this->getPaymentAdapter($request->getPaymentProcessor(), __NAMESPACE__);
-        $paymentAdapter->pay($sum);
+        $paymentAdapter = $this->getPaymentAdapter($request->getPaymentProcessor(), __NAMESPACE__ . '\PaymentAdapters');
+        return $paymentAdapter->pay($sum);
     }
 
     /**
-     * Looking for payment adapter in specified namespace
+     * Looking for a payment adapter in specified namespace
      *
      * @throws ReflectionException
      * @throws Exception
      */
-    private function getPaymentAdapter($name, $path): PaymentInterface
+    public function getPaymentAdapter($name, $path): PaymentInterface
     {
         $adapter = null;
 
         $allClasses = ClassFinder::getClassesInNamespace($path);
-
         foreach ($allClasses as $class) {
             $reflectionClass = new ReflectionClass($class);
             $attributes = $reflectionClass->getAttributes();
 
             foreach ($attributes as $attribute) {
-                if ($attribute->getName() === __NAMESPACE__ . '\AsPaymentAdapter' && $attribute->getArguments() === [$name]) {
+                if ($attribute->getName() === 'App\Attributes\AsPaymentAdapter' && $attribute->getArguments() === [$name]) {
                     $adapter = new $class();
                     break;
                 }

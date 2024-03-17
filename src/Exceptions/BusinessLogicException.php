@@ -1,6 +1,6 @@
 <?php
 
-namespace App\PriceCalculator;
+namespace App\Exceptions;
 
 use RuntimeException;
 
@@ -10,5 +10,4 @@ class BusinessLogicException extends RuntimeException
     {
         parent::__construct($description);
     }
-
 }
